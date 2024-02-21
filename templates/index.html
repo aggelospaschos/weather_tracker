@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts - Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS for better styling */
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+            font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
+        }
+        .container {
+            background-color: #fff; /* White background for container */
+            padding: 20px;
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+            max-width: 600px; /* Limit container width */
+            margin: auto; /* Center container horizontally */
+            margin-top: 50px; /* Add some top margin for spacing */
+        }
+        h1 {
+            color: #007bff; /* Blue heading color */
+            text-align: center; /* Center align heading */
+            margin-bottom: 20px; /* Add bottom margin for spacing */
+        }
+        .weather-info {
+            text-align: center; /* Center align weather information */
+        }
+        .weather-info p {
+            margin-bottom: 10px; /* Add bottom margin for spacing between paragraphs */
+            font-size: 18px; /* Increase font size for better readability */
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather App</h1>
+    <form action="/" method="POST" class="container">
+        <label for="city">Enter City:</label>
+        <input type="text" id="city" name="city">
+        <button type="submit" class="btn btn-primary">Get Weather</button>
+    </form>
+    
+    {% if weather_data %}
+        <div class="container">
+            <div class="weather-info">
+                <p><strong>City:</strong> {{ weather_data.name }}</p>
+                <p><strong>Temperature:</strong> {{ weather_data.main.temp }}°C</p>
+                <p><strong>Weather:</strong> {{ weather_data.weather[0].description }}</p>
+            </div>
+        </div>
+    {% endif %}
+    
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
